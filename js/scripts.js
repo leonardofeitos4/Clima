@@ -1,6 +1,5 @@
-const apiKey = "709efe692594f4a99645309fd8c1aaa1"; // Sua chave de API
+const apiKey = "709efe692594f4a99645309fd8c1aaa1";
 const apiCountryURL = "https://flagcdn.com/w320/";
-const apiUnsplash = "https://source.unsplash.com/1600x900/?";
 
 const cityInput = document.querySelector("#city-input");
 const searchBtn = document.querySelector("#search");
@@ -37,15 +36,29 @@ const getWeatherData = async (city) => {
     toggleLoader(); // Desativa o loader
 
     if (data.cod === "404") {
-      alert("Cidade não encontrada! Tente novamente.");
+      // Esconde o container de clima
+      weatherContainer.classList.add("hide");
+
+      // Mostra a mensagem de erro
+      errorMessageContainer.classList.remove("hide");
+
       return null;
     }
+
+    // Esconde a mensagem de erro se a cidade for encontrada
+    errorMessageContainer.classList.add("hide");
 
     return data;
   } catch (error) {
     console.error("Erro ao buscar dados:", error);
-    alert("Erro ao buscar dados do clima. Verifique sua conexão.");
     toggleLoader(); // Desativa o loader
+
+    // Esconde o container de clima
+    weatherContainer.classList.add("hide");
+
+    // Mostra a mensagem de erro
+    errorMessageContainer.classList.remove("hide");
+
     return null;
   }
 };
@@ -77,8 +90,11 @@ const showWeatherData = async (city) => {
   humidityElement.innerText = `${data.main.humidity}%`;
   windElement.innerText = `${data.wind.speed} km/h`;
 
-  // Mudar imagem de fundo
-  document.body.style.backgroundImage = `url("${apiUnsplash + city}")`;
+  // Mudar imagem de fundo para uma imagem local
+  document.body.style.backgroundImage = `url('img/bg-weather.jpg')`;
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundPosition = "center";
+  document.body.style.backgroundRepeat = "no-repeat";
 
   weatherContainer.classList.remove("hide");
 };
@@ -89,7 +105,6 @@ searchBtn.addEventListener("click", (e) => {
   const city = cityInput.value.trim();
 
   if (city === "") {
-    alert("Por favor, digite o nome de uma cidade.");
     return;
   }
 
