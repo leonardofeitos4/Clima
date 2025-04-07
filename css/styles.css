@@ -344,76 +344,45 @@ body {
   opacity: 1;
 }
 
-/* dispositivos móveis */
+/* Responsividade para dispositivos móveis */
 @media screen and (max-width: 480px) {
   .container {
-    width: 90%; /* Ocupa 90% da largura da tela */
+    width: 95%; /* Ocupa 95% da largura da tela */
     max-width: none; /* Remove o max-width fixo */
     padding: 1rem; /* Reduz o padding */
-    margin: 0 5%; /* Adiciona uma margem lateral */
-  }
-
-  .form h3 {
-    font-size: 1rem; /* Reduz o tamanho do título */
-    margin-bottom: 0.5rem;
+    margin: 0 auto; /* Centraliza o container */
   }
 
   .form-input-container {
-    flex-direction: column; /* Empilha input e botão */
+    display: flex; /* Mantém o layout flex */
+    flex-direction: row; /* Garante que fique na horizontal */
   }
 
   .form input {
-    width: 100%; /* Ocupa toda a largura */
-    margin-bottom: 0.5rem; /* Espaço entre input e botão */
+    flex: 1; /* Ocupa o espaço disponível */
+    padding: 0.6rem; /* Ajusta o padding */
   }
 
   .form button {
-    width: 100%; /* Botão ocupa toda a largura */
-    margin-left: 0; /* Remove a margem lateral */
+    padding: 0.6rem; /* Ajusta o padding */
+    min-width: 50px; /* Mantém a largura mínima */
+    margin-left: 8px; /* Mantém um pequeno espaço entre input e botão */
+  }
+
+  #suggestions button {
+    min-width: 100px; /* Reduz a largura mínima dos botões */
+    margin: 0.3rem; /* Reduz a margem */
+    padding: 0.4rem 0.6rem; /* Reduz o padding */
+    font-size: 0.9rem; /* Reduz o tamanho da fonte */
   }
 
   #temperature {
     font-size: 3rem; /* Reduz o tamanho da temperatura */
   }
 
-  #suggestions button {
-    min-width: 120px; /* Reduz a largura mínima dos botões */
-    margin: 0.3rem; /* Reduz a margem */
-    padding: 0.4rem 0.6rem; /* Reduz o padding */
-    font-size: 0.9rem; /* Reduz o tamanho da fonte */
-  }
-
   #error-message {
-    max-width: 90%;
-    padding: 0.7rem;
-    font-size: 0.9rem;
-  }
-
-  #weather-data h2 {
-    font-size: 1.2rem;
-  }
-
-  #details-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #details-container #humidity {
-    border-right: none;
-    border-bottom: 1px solid #000000;
-    margin-bottom: 0.5rem;
-    padding-bottom: 0.5rem;
-  }
-}
-
-/* Para tablets */
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  .container {
-    width: 80%;
-    max-width: none;
-  }
-
-  #suggestions button {
-    min-width: 140px;
+    max-width: 90%; /* Ocupa 90% da largura */
+    padding: 0.7rem; /* Reduz o padding */
+    font-size: 0.9rem; /* Reduz o tamanho da fonte */
   }
 }
