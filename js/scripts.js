@@ -122,6 +122,7 @@ cityInput.addEventListener("keyup", (e) => {
 suggestionButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const city = btn.getAttribute("id");
+    console.log("Cidade selecionada", city);
     showWeatherData(city);
   });
 });
